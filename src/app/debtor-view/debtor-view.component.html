@@ -103,8 +103,8 @@
         </div>
         <div class="form-group col-md-3">
           <label for="tokenSymbol2">Principal token</label>
-          <select class="form-control" id="tokenSymbol2" disabled
-                  [(ngModel)]="loan.tokenSymbol" name="tokenSymbol" #tokenSymbol="ngModel">
+          <select class="form-control" id="tokenSymbol2"
+                  [(ngModel)]="loan.tokenSymbol" name="tokenSymbol" #tokenSymbol="ngModel" disabled>
             <option *ngFor="let token of tokens" [value]="token">{{token}}</option>
           </select>
         </div>
@@ -121,11 +121,11 @@
           <label for="amortization">Amortization</label>
           <select class="form-control" id="amortization"
                   [(ngModel)]="loan.amortization" name="amortization" #amortization="ngModel" disabled>
-            <option value="hourly">hourly</option>
-            <option value="daily">daily</option>
-            <option value="weekly">weekly</option>
-            <option value="monthly">monthly</option>
-            <option value="yearly">yearly</option>
+            <option value="Hours">hourly</option>
+            <option value="Days">daily</option>
+            <option value="Weeks">weekly</option>
+            <option value="Months">monthly</option>
+            <option value="Years">yearly</option>
           </select>
         </div>
         <div class="form-group col-md-3">
