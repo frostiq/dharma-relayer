@@ -4,8 +4,8 @@
     </div>
 </div>
 <div class="container">
+    <h5>New orders</h5>
     <div class="row my-2">
-        <h5>Orders signed by underwriter</h5>
         <div class="col-4" *ngIf="loans.length">
             <div class="list-group">
                 <a *ngFor="let loan of loans" (click)="signLoan(loan, content)"
