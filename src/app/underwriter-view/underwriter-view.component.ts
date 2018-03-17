@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { LoanService } from '../loan.service';
-import * as Web3 from "web3";
 
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
