@@ -18,9 +18,9 @@
       <form (ngSubmit)="onSubmit()" #debtorForm="ngForm">
         <div class="form-row">
           <div class="form-group col-md-4">
-            <label for="loanAmount">Loan amount</label>
-            <input type="text" class="form-control" id="loanAmount"
-                   [(ngModel)]="newLoan.loanAmount" name="loanAmount" #loanAmount="ngModel">
+            <label for="amount">Loan amount</label>
+            <input type="text" class="form-control" id="amount"
+                   [(ngModel)]="newLoan.amount" name="amount" #amount="ngModel">
           </div>
           <div class="form-group col-md-4">
             <label for="tokenSymbol">Loan token</label>
@@ -97,8 +97,8 @@
     <form>
       <div class="form-row">
         <div class="form-group col-md-3">
-          <label for="amount">Principal amount</label>
-          <input type="text" class="form-control" id="amount"
+          <label for="amount2">Principal amount</label>
+          <input type="text" class="form-control" id="amount2"
                  [(ngModel)]="loan.amount" name="amount" #amount="ngModel" disabled>
         </div>
         <div class="form-group col-md-3">

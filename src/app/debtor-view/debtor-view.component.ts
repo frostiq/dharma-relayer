@@ -12,16 +12,16 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 export class DebtorViewComponent implements OnInit {
     public loans = [];
     public newLoan = {
-        loanAmount: '100',
-        loanToken: 'ZRX',
+        amount: '100',
+        tokenSymbol: 'ZRX',
         purpose: 'investing',
         firstName: 'Jonh',
         lastName: 'Doe',
         ssn: '111-222',
-        address: '12 Some str',
+        streetAddress: '12 Some str',
         city: 'Boston',
         state: 'MA',
-        zip: '02115'
+        zipCode: '02115'
     };
     public loan = {};
     public tokens = ['REP', 'ZRX', 'MKR', 'DAI', 'MANA', 'EOS'];
