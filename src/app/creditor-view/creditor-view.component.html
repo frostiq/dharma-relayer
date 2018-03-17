@@ -24,8 +24,24 @@
       <td>{{loan.interestRate}}</td>
       <td>{{loan.termLength}}</td>
       <td>{{loan.amortization}}</td>
-      <td><button type="button" class="btn btn-primary btn-sm">FUND</button></td>
+      <td><button type="button" (click)="fillOrder(loan, content)" class="btn btn-primary btn-sm">FUND</button></td>
     </tr>
     </tbody>
   </table>
 </div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Debt order {{loan.id}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    Are you sure to want to fill debt order?
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-primary" (click)="d('Close click')">Cancel</button>
+    <button type="button" class="btn btn-primary" (click)="c('Confirm')">Confirm</button>
+  </div>
+</ng-template>

@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { LoanService } from '../loan.service';
+import {Component, OnInit} from '@angular/core';
+import {LoanService} from '../loan.service';
+import { Router } from '@angular/router';
+
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-creditor-view',
-  templateUrl: './creditor-view.component.html',
-  styleUrls: ['./creditor-view.component.css']
+    selector: 'app-creditor-view',
+    templateUrl: './creditor-view.component.html',
+    styleUrls: ['./creditor-view.component.css']
 })
 export class CreditorViewComponent implements OnInit {
-  public loans = [];
+    public loans = [];
+    public loan = {};
 
-  constructor(private loanService: LoanService) { }
+    constructor(private loanService: LoanService, private modalService: NgbModal, private router: Router) {
+    }
 
     ngOnInit() {
         this.getLoans();
@@ -24,6 +29,19 @@ export class CreditorViewComponent implements OnInit {
                     }
                 });
             });
+    }
+
+    fillOrder(loan, content) {
+        this.loan = loan;
+        this.modalService.open(content).result.then((result) => {
+            console.log(result);
+            this.loanService.updateLoan(loan, 'Filled').subscribe(() => {
+                this.loans = [];
+                this.getLoans();
+            });
+        }, (reason) => {
+            console.log(reason);
+        });
     }
 
 
