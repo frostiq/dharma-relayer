@@ -32,8 +32,8 @@ export class LoanService {
             );
     }
 
-    updateLoan(loan): Observable<any> {
-        console.log(loan);
+    updateLoan(loan, status): Observable<any> {
+        loan.status = status;
         const url = `${this.apiUrl}/${loan.id}`;
         return this.http.put<any>(url, loan, httpOptions)
             .pipe(

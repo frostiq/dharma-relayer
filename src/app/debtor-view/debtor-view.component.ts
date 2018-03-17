@@ -56,8 +56,7 @@ export class DebtorViewComponent implements OnInit {
         this.loan = loan;
         this.modalService.open(content, {size: 'lg'}).result.then((result) => {
             console.log(result);
-            loan.status = 'SignedByDebter';
-            this.loanService.updateLoan(loan).subscribe(() => {
+            this.loanService.updateLoan(loan, 'SignedByDebter').subscribe(() => {
                 this.router.navigate(['creditor']);
             });
         }, (reason) => {

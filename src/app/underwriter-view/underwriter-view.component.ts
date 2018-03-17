@@ -11,7 +11,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 })
 export class UnderwriterViewComponent implements OnInit {
     public loans = [];
-    public loan = {};
+    public loan = { status };
     public tokens = ['REP', 'ZRX', 'MKR', 'DAI', 'MANA', 'EOS'];
 
     constructor(private loanService: LoanService, private modalService: NgbModal, private router: Router) {}
@@ -42,8 +42,7 @@ export class UnderwriterViewComponent implements OnInit {
     }
 
     onSubmit() {
-        this.loan['status'] = 'SignedByUnderwriter';
-        this.loanService.updateLoan(this.loan).subscribe(() => {
+        this.loanService.updateLoan(this.loan, 'SignedByUnderwriter').subscribe(() => {
             this.router.navigate(['debtor']);
         });
     }
