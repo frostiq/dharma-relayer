@@ -1,0 +1,31 @@
+<div class="bg-secondary">
+  <div class="container">
+    <h5 class="py-2 text-white">Browse loans</h5>
+  </div>
+</div>
+<div class="container table-responsive">
+  <table class="table table-sm table-striped table-hover font-weight-normal">
+    <thead class="text-white bg-secondary">
+    <tr>
+      <th scope="col">Underwriter</th>
+      <th scope="col">Assigned repayment score</th>
+      <th scope="col">Loan amount</th>
+      <th scope="col">Interest rate</th>
+      <th scope="col">Term</th>
+      <th scope="col">Amortization frequency</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let loan of loans" class="loan-row">
+      <td>{{loan.underwriterAddress}}</td>
+      <td>{{loan.underwriterRiskRating}}</td>
+      <td>{{loan.amount}}</td>
+      <td>{{loan.interestRate}}</td>
+      <td>{{loan.termLength}}</td>
+      <td>{{loan.amortization}}</td>
+      <td><button type="button" class="btn btn-primary btn-sm">FUND</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>

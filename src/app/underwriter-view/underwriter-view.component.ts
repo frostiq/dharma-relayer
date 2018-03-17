@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoanService } from '../loan.service';
+import * as example from '../../../example.js';
+import * as Web3 from "web3";
 
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
@@ -16,7 +18,6 @@ export class UnderwriterViewComponent implements OnInit {
     constructor(private loanService: LoanService, private modalService: NgbModal) {}
 
     signLoan(loan, content) {
-        loan.status = 'SignedByUnderwriter';
         this.loan = loan;
         this.modalService.open(content, {size: 'lg'}).result.then((result) => {
             console.log(result);
@@ -41,6 +42,8 @@ export class UnderwriterViewComponent implements OnInit {
     }
 
     onSubmit() {
+        const dharma = await example.instantiateDharma();
+        this.loan['status'] = 'SignedByUnderwriter';
         this.loanService.updateLoan(this.loan).subscribe();
     }
 
