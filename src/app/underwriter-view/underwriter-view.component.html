@@ -1,0 +1,95 @@
+<div class="bg-secondary">
+    <div class="container">
+        <h5 class="py-2 text-white">Underwriting Commitment -- Simple interest loan</h5>
+    </div>
+</div>
+<div class="container">
+    <div class="row my-2">
+        <div class="col-4" *ngIf="loans.length">
+            <div class="list-group">
+                <a *ngFor="let loan of loans" (click)="signLoan(loan, content)"
+                   class="list-group-item list-group-item-action">{{loan.id}}</a>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-5" *ngIf="loan">
+        <div class="col-12">
+
+        </div>
+    </div>
+</div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">Debt order {{loan.id}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="container-fluid">
+            <form (ngSubmit)="onSubmit()" #underwriterForm="ngForm">
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="amount">Principal amount</label>
+                        <input type="text" class="form-control" id="amount"
+                               [(ngModel)]="loan.amount" name="amount" #amount="ngModel">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="tokenSymbol">Principal token</label>
+                        <select class="form-control" id="tokenSymbol"
+                                [(ngModel)]="loan.tokenSymbol" name="tokenSymbol" #tokenSymbol="ngModel">
+                            <option *ngFor="let token of tokens" [value]="token">{{token}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="interestRate">Interest rate</label>
+                        <input type="text" class="form-control" id="interestRate"
+                               [(ngModel)]="loan.interestRate" name="interestRate" #interestRate="ngModel">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="amortization">Amortization</label>
+                        <select class="form-control" id="amortization"
+                                [(ngModel)]="loan.amortization" name="amortization" #amortization="ngModel">
+                            <option value="hourly">hourly</option>
+                            <option value="daily">daily</option>
+                            <option value="weekly">weekly</option>
+                            <option value="monthly">monthly</option>
+                            <option value="yearly">yearly</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="termLength">Term Length (months)</label>
+                        <input type="text" class="form-control" id="termLength"
+                               [(ngModel)]="loan.termLength" name="termLength" #termLength="ngModel">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="underwriterRiskRating">Underwriter assigned repayment score (0-100)</label>
+                        <input type="text" class="form-control" id="underwriterRiskRating"
+                               [(ngModel)]="loan.underwriterRiskRating" name="underwriterRiskRating"
+                               #underwriterRiskRating="ngModel">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="underwriterFee">Underwriter fee</label>
+                        <input type="text" class="form-control" id="underwriterFee"
+                               [(ngModel)]="loan.underwriterFee" name="underwriterFee" #underwriterFee="ngModel">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="relayerFee">Relayer fee</label>
+                        <input type="text" class="form-control" id="relayerFee"
+                               [(ngModel)]="loan.relayerFee" name="relayerFee" #relayerFee="ngModel">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary" [disabled]="!underwriterForm.form.valid">Submit</button>
+            </form>
+        </div>
+    </div>
+</ng-template>

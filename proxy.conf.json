@@ -1,0 +1,10 @@
+{
+  "/api": {
+    "target": "http://ec2-54-162-56-0.compute-1.amazonaws.com/api",
+    "secure": false,
+    "pathRewrite": {
+      "^/api": ""
+    },
+    "changeOrigin": true
+  }
+}
