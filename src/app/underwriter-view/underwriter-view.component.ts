@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoanService } from '../loan.service';
+import { Router } from '@angular/router';
 
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
@@ -13,12 +14,13 @@ export class UnderwriterViewComponent implements OnInit {
     public loan = {};
     public tokens = ['REP', 'ZRX', 'MKR', 'DAI', 'MANA', 'EOS'];
 
-    constructor(private loanService: LoanService, private modalService: NgbModal) {}
+    constructor(private loanService: LoanService, private modalService: NgbModal, private router: Router) {}
 
     signLoan(loan, content) {
         this.loan = loan;
         this.modalService.open(content, {size: 'lg'}).result.then((result) => {
             console.log(result);
+            this.onSubmit();
         }, (reason) => {
             console.log(reason);
         });
@@ -41,7 +43,9 @@ export class UnderwriterViewComponent implements OnInit {
 
     onSubmit() {
         this.loan['status'] = 'SignedByUnderwriter';
-        this.loanService.updateLoan(this.loan).subscribe();
+        this.loanService.updateLoan(this.loan).subscribe(() => {
+            this.router.navigate(['debtor']);
+        });
     }
 
 }

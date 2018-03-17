@@ -89,7 +89,7 @@
                                [(ngModel)]="loan.relayerFee" name="relayerFee" #relayerFee="ngModel">
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary" [disabled]="!underwriterForm.form.valid">Sign order</button>
+                <button type="submit" class="btn btn-primary" (click)="c('Close click')" [disabled]="!underwriterForm.form.valid">Sign order</button>
             </form>
         </div>
     </div>
